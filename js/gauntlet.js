@@ -186,7 +186,7 @@ Gauntlet = function() {
 
     images: [
       { id: 'backgrounds', url: "images/backgrounds.png" }, // http://opengameart.org/content/gauntlet-like-tiles
-      { id: 'entities',    url: "images/entities.png"    }  // http://opengameart.org/forumtopic/request-for-tileset-spritesheet-similar-to-gauntlet-ii 
+      { id: 'entities',    url: "images/entities.png"    }  // http://opengameart.org/forumtopic/request-for-tileset-spritesheet-similar-to-gauntlet-ii
     ],
 
     sounds: [
@@ -222,7 +222,9 @@ Gauntlet = function() {
     ],
 
     levels: [
-      { name: 'Test Level',     url: "levels/testlevel.png", floor: FLOOR.LIGHT_STONE,      wall: WALL.BLUE_COBBLE,      music: 'bloodyhalo',      score:  1000, help: null }, 
+      { name: 'Test Level',     url: "levels/testlevel.png", floor: FLOOR.LIGHT_STONE,      wall: WALL.BLUE_COBBLE,      music: 'bloodyhalo',      score:  1000, help: null },
+      { name: 'Experimenting',  url: "levels/trainer1-mod.png",  floor: FLOOR.PURPLE_LAMINATE,       wall: WALL.BLUE_COBBLE,      music: 'warbringer',      score:  1000, help: "first experiments" },
+      { name: 'More experiments',  url: "levels/level4-mod.png",  floor: FLOOR.PURPLE_LAMINATE,      wall: WALL.BLUE_COBBLE,      music: 'bloodyhalo',      score:  1000, help: null },
       { name: 'Training',       url: "levels/trainer1.png",  floor: FLOOR.LIGHT_STONE,      wall: WALL.BLUE_COBBLE,      music: 'bloodyhalo',      score:  1000, help: "Shoot ghosts and find the exit" },
       { name: 'Training Two',   url: "levels/trainer2.png",  floor: FLOOR.LIGHT_STONE,      wall: WALL.BLUE_COBBLE,      music: 'bloodyhalo',      score:  1000, help: "Watch out for demon fire" },
       { name: 'Training Three', url: "levels/trainer3.png",  floor: FLOOR.LIGHT_STONE,      wall: WALL.BLUE_COBBLE,      music: 'bloodyhalo',      score:  1000, help: "Find keys to open doors" },
@@ -355,7 +357,7 @@ Gauntlet = function() {
       $('booting').hide();
       this.runner.start();
       if (Game.Math.between(DEBUG.LEVEL, 0, cfg.levels.length-1))
-        this.start(PLAYER[DEBUG.PLAYER], DEBUG.LEVEL); 
+        this.start(PLAYER[DEBUG.PLAYER], DEBUG.LEVEL);
     },
 
     onmenu: function(event, previous, current) {
@@ -642,7 +644,7 @@ Gauntlet = function() {
       var c, max, cell, before = obj.cells, after = this.overlappingCells(x, y, TILE, TILE);
 
       // optimization - if overlapping cells are same as they were before then bail out early
-      if ((before.length === after.length)                  && 
+      if ((before.length === after.length)                  &&
           (                       (before[0] === after[0])) &&
           ((before.length < 2) || (before[1] === after[1])) &&
           ((before.length < 3) || (before[2] === after[2])) &&
@@ -778,7 +780,7 @@ Gauntlet = function() {
       function isnothing(pixel)      { return is(pixel, PIXEL.NOTHING);   };
       function iswall(pixel)         { return is(pixel, PIXEL.WALL);      };
       function isstart(pixel)        { return is(pixel, PIXEL.START);     };
-      function isdoor(pixel)         { return is(pixel, PIXEL.DOOR);      }; 
+      function isdoor(pixel)         { return is(pixel, PIXEL.DOOR);      };
       function isexit(pixel)         { return is(pixel, PIXEL.EXIT);      };
       function isgenerator(pixel)    { return is(pixel, PIXEL.GENERATOR); };
       function ismonster(pixel)      { return is(pixel, PIXEL.MONSTER);   };
@@ -1185,7 +1187,7 @@ Gauntlet = function() {
     update: function(frame, player, map, viewport) {
       if (this.delay && --this.delay)
         return;
-      this.start = this.start || frame; 
+      this.start = this.start || frame;
       this.frame = animate(frame - this.start, this.type.fpf, this.type.frames + 1);
       if (this.frame === this.type.frames)
         publish(EVENT.FX_FINISHED, this);
@@ -1818,4 +1820,3 @@ Gauntlet = function() {
   //===========================================================================
 
 }
-
